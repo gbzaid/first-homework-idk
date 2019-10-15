@@ -1,9 +1,10 @@
 class Player
-  attr_reader :name, :side
+  attr_reader :name, :side, :cups
 
   def initialize(name, side)
     @name = name
     @side = side
+
   end
 
   def prompt
