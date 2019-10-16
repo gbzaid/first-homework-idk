@@ -5,18 +5,29 @@ class Simon
 
   def initialize
     @sequence_length = 1
+    @game_over = false
+    @seq = []
   end
 
   def play
-
+    until self.game_over
+      self.take_turn      
+    end
+    self.game_over_message
+    self.reset_game
   end
 
   def take_turn
-
+    unless self.game_over
+      self.show_sequence
+      self.require_sequence
+      self.round_success_message
+      self.sequence_length += 1
+    end
   end
 
   def show_sequence
-
+    self.add_random_color
   end
 
   def require_sequence
@@ -24,7 +35,7 @@ class Simon
   end
 
   def add_random_color
-
+    self.seq.push(COLORS.sample)
   end
 
   def round_success_message
@@ -36,6 +47,8 @@ class Simon
   end
 
   def reset_game
-
+    self.sequence_length = 1
+    self.game_over = false
+    self.seq = []
   end
 end
