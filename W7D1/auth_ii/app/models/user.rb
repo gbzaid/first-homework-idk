@@ -18,9 +18,13 @@ class User < ApplicationRecord
     def ensure_session_token
     end
 
-    def password=
+    def password=(password)
+        self.password_digest = BCrypt::Password.create(password)
+
     end
 
-
+    def is_password?(password)
+        self.password_digest == 
+    end
 
 end
